@@ -25,7 +25,7 @@
 
     {% for todo in todo_list %}
         <div class = "ui segment">
-        <p class="ui big header">{{loop.index}} ) {{todo.title}}</p>
+        <p class="ui big header">{{todo.id}} ) {{todo.title}}</p>
 
         {% if todo.complete == False %}
             <span class ="ui gray label">Not Completed</span>
@@ -33,8 +33,8 @@
             <span class ="ui green label">Completed</span>
         {% endif %}
 
-        <a class = "ui blue button" href="/update/{{loop.index}}">Update</a>
-        <a class = "ui red button"  href="/delete/{{loop.index}}">Delete</a>
+        <a class = "ui blue button" href="/update/{{todo.id}}">Update</a>
+        <a class = "ui red button"  href="/delete/{{todo.id}}">Delete</a>
         </div>
     {% endfor %}
     <hr style="color: white; margin-top:30px;">
