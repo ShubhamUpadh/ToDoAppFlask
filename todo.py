@@ -8,9 +8,18 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120))
+    complete = db.Column(db.Boolean)
+
+
 @app.route('/')
 def index():
-    return render_template('base.html')
+    # show all todos
+    todo_list = Todo.query.all()
+    print(todo_list)
+    return render_template('base.html', todo_list=todo_list)
 
 
 @app.route('/about')
