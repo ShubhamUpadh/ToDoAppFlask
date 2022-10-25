@@ -50,7 +50,6 @@ def delete(todo_id):
     return redirect(url_for("index"))
 
 
-
 @app.route('/about')
 def about():
     return "About Something"
