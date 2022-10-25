@@ -5,18 +5,18 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TODO APP</title>
+    <title>TO-DO APP</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
 </head>
-<body style="background:#000;">
+<body style="background:#041b1e;">
 <div class ="ui container">
 
-    <hr style="color: white; margin-top:50px;">
+    <hr style="color: white; margin-top:10px;">
     <h1 style="color: white; font-size: 300%" class="ui center aligned header"><b>TODO APP</b></h1>
     <form class ="ui form" action="/add" method="post" >
         <div class = "field">
-            <label for ="title">To-Do Title</label>
+            <label for ="title" style ="color: white;font-size:20px;">To-Do Title</label>
             <input type="text" name="title" placeholder="Enter a task">
             <br>
             <button class="ui blue button" type="submit">Add</button>
@@ -25,7 +25,7 @@
 
     {% for todo in todo_list %}
         <div class = "ui segment">
-        <p class="ui big header">{{todo.id}} ) {{todo.title}}</p>
+        <p class="ui big header">{{loop.index}} ) {{todo.title}}</p>
 
         {% if todo.complete == False %}
             <span class ="ui gray label">Not Completed</span>
@@ -33,8 +33,8 @@
             <span class ="ui green label">Completed</span>
         {% endif %}
 
-        <a class = "ui blue button" href="/update/{{todo.id}}">Update</a>
-        <a class = "ui red button"  href="/delete/{{todo.id}}">Delete</a>
+        <a class = "ui blue button" href="/update/{{loop.index}}">Update</a>
+        <a class = "ui red button"  href="/delete/{{loop.index}}">Delete</a>
         </div>
     {% endfor %}
     <hr style="color: white; margin-top:30px;">
